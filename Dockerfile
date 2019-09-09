@@ -2,11 +2,15 @@ FROM php:7.3-cli
 MAINTAINER Ferdinand Polycarpe ZAFITSARA <zfpoly@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 
+RUN apt-get update && \
+    apt-get install -y libpq-dev libzip-dev libicu-dev --no-install-recommends && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN apt-get update -yqq \
     && apt-get install git zlib1g-dev libsqlite3-dev -y \
     && docker-php-ext-install pdo_sqlite \
     && docker-php-ext-install bcmath \
-    && docker-php-ext-install bz2 \
     && docker-php-ext-install calendar \
     && docker-php-ext-install exif \
     && docker-php-ext-install gettext \
