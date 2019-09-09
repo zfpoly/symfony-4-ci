@@ -1,0 +1,7 @@
+version: '3.5'
+
+services:
+  symfony_ci:
+    build:
+      context: ./
+    container_name: symfony_ci
