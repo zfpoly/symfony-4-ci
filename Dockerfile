@@ -5,22 +5,21 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -yqq \
     && apt-get install git zlib1g-dev libsqlite3-dev -y \
     && docker-php-ext-install pdo_sqlite \
-       opcache \
-       bcmath \
-       bz2 \
-       calendar \
-       exif \
-       gettext \
-       iconv \
-       pcntl \
-       pdo \
-       pdo_mysql \
-       pdo_pgsql \
-       pgsql \
-       sockets \
-       shmop \
-       intl \
-       zip \
+    && docker-php-ext-install bcmath \
+    && docker-php-ext-install bz2 \
+    && docker-php-ext-install calendar \
+    && docker-php-ext-install exif \
+    && docker-php-ext-install gettext \
+    && docker-php-ext-install iconv \
+    && docker-php-ext-install pcntl \
+    && docker-php-ext-install pdo \
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install pdo_pgsql \
+    && docker-php-ext-install pgsql \
+    && docker-php-ext-install sockets \
+    && docker-php-ext-install shmop \
+    && docker-php-ext-install intl \
+    && docker-php-ext-install zip
 
 RUN apt-get update \
 && apt-get install -y libwebp-dev libjpeg62-turbo-dev libpng-dev libxpm-dev \
