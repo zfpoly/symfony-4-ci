@@ -39,13 +39,11 @@ RUN curl -fsSL https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
     && composer global require phpunit/phpunit ^7.0 --no-progress --no-scripts --no-interaction
 
-RUN pecl install xdebug \
-    && echo 'zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20170718/xdebug.so' > \
-        /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && php -m | grep xdebug
+RUN pecl install xdebug && \
+    docker-php-ext-enable xdebug
 
 # Install NodeJS
-RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get install -y nodejs
 
 # Install Yarn
